@@ -1,4 +1,18 @@
-# Design-framework context — aesthetic references
+# Reference Context · 参考資料 *sankō shiryō*
+
+> Source materials for the Kinari framework — not the framework itself.
+
+**The framework lives at the repository root.** This directory holds the *reference materials* the framework was developed from: app captures, motion analyses, navigation analyses.
+
+- **[README](../../README.md)** — what Kinari is and how to apply it
+- **[Principles](../principles.md)** — the 10 commitments
+- **[Visual Language](../visual-language.md)** — typography, color, shadows, photo, backgrounds, iconography, layout, motion
+- **[Lineage](../lineage.md)** — honest attribution to the design traditions Kinari consolidates
+- **[Pattern Library](../patterns/_index.md)** — 12 named UI metaphors
+
+---
+
+## What's in this directory
 
 Purpose: source material for an in-progress design philosophy/framework for the user's future projects. Started 2026-05-18.
 
