@@ -1,0 +1,16 @@
+.canvas {
+  --dot-color: rgba(26, 26, 26, 0.13);
+  background-color: var(--kinari);
+  min-height: 100%;
+}
+
+.dotGrid {
+  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+  background-size: var(--dot-spacing, 14px) var(--dot-spacing, 14px);
+  background-position: 0 0;
+}
+
+.paperTone {
+  background-color: var(--paper-tone);
+  background-image: none;
+}
