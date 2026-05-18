@@ -5,7 +5,7 @@ import styles from "./TypePair.module.css";
 export interface TypeRoleProps {
   children: ReactNode;
   as?: ElementType;
-  className?: string;
+  className?: string | undefined;
 }
 
 /** Visual Language §01 type role: Display — friendly serif weight 600. */
