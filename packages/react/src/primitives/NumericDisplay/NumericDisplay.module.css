@@ -1,0 +1,28 @@
+.numeric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.18em;
+  color: var(--kaki-iro);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.sans {
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.03em;
+}
+
+.serif {
+  font-family: Georgia, serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.unit {
+  font-size: 0.5em;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
