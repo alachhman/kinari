@@ -1,0 +1,71 @@
+.navPill {
+  position: fixed;
+  bottom: var(--space-nav-pill-offset);
+  left: 50%;
+  transform: translateX(-50%) rotate(-0.3deg);
+  background: var(--shiro);
+  border-radius: 999px;
+  padding: 6px;
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  box-shadow: var(--shadow-umber-resting);
+  z-index: 100;
+  font-size: 13px;
+}
+
+.zone {
+  padding: 8px 14px;
+  color: var(--sumi-mute);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border-radius: 999px;
+  transition: color var(--duration-cross-fade) var(--ease-tawami);
+}
+
+.zone:hover {
+  color: var(--sumi);
+}
+
+.zone[aria-disabled="true"] {
+  color: var(--sumi-mute);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.zone:focus-visible {
+  outline: 2px solid var(--shikon);
+  outline-offset: 2px;
+}
+
+.center {
+  padding: 8px 18px;
+  background: var(--kinari);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+}
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.18);
+}
+.dot[data-active="true"] {
+  background: var(--shikon);
+}
+
+@media (max-width: 600px) {
+  .zoneLabel {
+    display: none;
+  }
+}
