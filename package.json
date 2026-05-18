@@ -15,7 +15,11 @@
     "typecheck": "pnpm -r typecheck",
     "lint": "eslint \"{packages,apps}/**/*.{ts,tsx,js,jsx}\" --max-warnings=0 --no-error-on-unmatched-pattern",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "postinstall": "simple-git-hooks || echo 'simple-git-hooks: skipped (likely in a worktree); CI lint is the safety net'"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm format:check && pnpm lint"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -27,6 +31,7 @@
     "eslint-plugin-react": "^7",
     "eslint-plugin-react-hooks": "^4",
     "prettier": "^3",
+    "simple-git-hooks": "^2.13.1",
     "typescript": "^5.4.0"
   }
 }
