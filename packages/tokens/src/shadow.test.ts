@@ -44,10 +44,12 @@ describe("shadowFromAccent", () => {
     const resting = shadowFromAccent("#5B3D6E", "resting");
     const floating = shadowFromAccent("#5B3D6E", "floating");
 
-    // Floating should have at least as many layers as contact
+    // Floating should have at least as many layers as resting, which has more than contact
     const contactLayers = contact.split(",").length;
+    const restingLayers = resting.split(",").length;
     const floatingLayers = floating.split(",").length;
-    expect(floatingLayers).toBeGreaterThanOrEqual(contactLayers);
+    expect(restingLayers).toBeGreaterThanOrEqual(contactLayers);
+    expect(floatingLayers).toBeGreaterThanOrEqual(restingLayers);
   });
 
   it("throws on invalid hex input", () => {
