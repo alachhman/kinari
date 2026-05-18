@@ -1,2 +1,1 @@
-// Public barrel — populated by subsequent tasks
-export {};
+export * from "./colors";
