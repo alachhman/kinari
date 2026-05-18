@@ -1,6 +1,9 @@
 # Brainstorming companion scratch (per superpowers visual-companion guide)
 .superpowers/
 
+# Claude Code worktrees (isolated workspaces)
+.claude/worktrees/
+
 # macOS noise
 .DS_Store
 .AppleDouble
