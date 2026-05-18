@@ -1,0 +1,29 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--shikon) 12%, transparent);
+  color: var(--shikon);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 1px 1px 0 color-mix(in srgb, var(--shikon) 15%, transparent);
+  transition: background var(--duration-cross-fade) var(--ease-tawami);
+}
+
+.chip:hover,
+.chip:focus-visible {
+  background: color-mix(in srgb, var(--shikon) 22%, transparent);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--shikon);
+  outline-offset: 2px;
+}
+
+.number {
+  font-weight: 800;
+  font-style: italic;
+}
