@@ -27,6 +27,15 @@ build/
 .next/
 .cache/
 
+# Workspace build outputs
+packages/*/dist/
+packages/*/*.tsbuildinfo
+apps/*/dist/
+apps/*/.astro/
+
+# pnpm
+.pnpm-store/
+
 # Logs
 *.log
 npm-debug.log*
