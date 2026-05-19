@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AdjustAffordance · mockup</title>
+    <style>
+      :root {
+        --kinari: #f7f5f0;
+        --sumi: #1a1a1a;
+        --sumi-muted: #6b6b6b;
+        --sumi-mute: #8a8a8a;
+        --kaki-iro: #d97a3c;
+        --shiro: #ffffff;
+        --shikon: #5b3d6e;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--kinari);
+        color: var(--sumi);
+        font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+        line-height: 1.55;
+        background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+        background-size: 14px 14px;
+        min-height: 100vh;
+      }
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 56px 28px 100px;
+      }
+      .back {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--sumi-mute);
+        text-decoration: none;
+        margin-bottom: 24px;
+      }
+      .back:hover {
+        color: var(--sumi);
+      }
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--sumi-mute);
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      h1 {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 36px;
+        text-align: center;
+        letter-spacing: -0.015em;
+      }
+      .sub {
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: var(--sumi-muted);
+        text-align: center;
+        font-size: 15px;
+        margin: 8px 0 36px;
+      }
+      .options {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 28px;
+      }
+      @media (max-width: 900px) {
+        .options {
+          grid-template-columns: 1fr;
+        }
+      }
+      .opt {
+        background: var(--shiro);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow:
+          4px 4px 0 rgba(72, 55, 32, 0.07),
+          10px 18px 30px rgba(72, 55, 32, 0.1);
+      }
+      .opt .preview {
+        background: var(--kinari);
+        background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+        background-size: 10px 10px;
+        padding: 36px 24px;
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+      .opt .meta {
+        padding: 18px 22px 22px;
+        border-top: 1px solid rgba(26, 26, 26, 0.06);
+      }
+      .opt .letter {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-style: italic;
+        color: var(--shikon);
+        font-size: 16px;
+      }
+      .opt .name {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 19px;
+        margin: 4px 0 8px;
+      }
+      .opt .desc {
+        color: #2a2a2a;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* Shared sticker preview (the "result" of an AI cutout) */
+      .result-sticker {
+        background: var(--shiro);
+        border-radius: 14px;
+        padding: 18px 22px;
+        transform: rotate(-0.6deg);
+        box-shadow:
+          4px 4px 0 rgba(72, 55, 32, 0.07),
+          10px 18px 30px rgba(72, 55, 32, 0.1);
+        text-align: center;
+      }
+      .result-sticker .cutout {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #e3a76b 0%, #c97a3c 100%);
+        border-radius: 50%;
+        border: 3px solid var(--shiro);
+        box-shadow: 0 2px 8px rgba(72, 55, 32, 0.2);
+      }
+      .result-sticker .label {
+        font-family: -apple-system, system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        margin-top: 10px;
+        color: var(--sumi);
+      }
+      .result-sticker .kcal {
+        font-style: italic;
+        font-weight: 800;
+        color: var(--kaki-iro);
+        letter-spacing: -0.03em;
+        font-size: 14px;
+        margin-top: 2px;
+      }
+
+      /* --- OPT A: inline italic chip --- */
+      .adjust-a {
+        background: transparent;
+        border: 1px dashed rgba(26, 26, 26, 0.25);
+        border-radius: 999px;
+        padding: 6px 14px;
+        color: var(--sumi-muted);
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .adjust-a:hover {
+        color: var(--sumi);
+        border-color: var(--sumi);
+      }
+
+      /* --- OPT B: tiny pill with retry glyph + label --- */
+      .adjust-b {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--shiro);
+        border: none;
+        border-radius: 999px;
+        padding: 8px 16px;
+        color: var(--sumi);
+        font-family: -apple-system, system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        box-shadow:
+          2px 3px 0 rgba(72, 55, 32, 0.07),
+          6px 10px 18px rgba(72, 55, 32, 0.1);
+      }
+      .adjust-b .glyph {
+        color: var(--kaki-iro);
+        font-size: 15px;
+      }
+
+      /* --- OPT C: full prose row with link --- */
+      .adjust-c {
+        background: rgba(217, 122, 60, 0.08);
+        border-radius: 12px;
+        padding: 10px 14px;
+        color: var(--sumi-muted);
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 13px;
+        text-align: center;
+        max-width: 260px;
+      }
+      .adjust-c a {
+        color: var(--kaki-iro);
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 122, 60, 0.4);
+        font-weight: 700;
+        font-style: normal;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="./">← back to mockups</a>
+      <div class="eyebrow">Question 03</div>
+      <h1>AdjustAffordance shape</h1>
+      <p class="sub">
+        Shown beneath an AI-generated result (cutout, classification, transcription).<br />Tone
+        matters: never shaming, never apologetic. Just a quiet offer to refine.
+      </p>
+
+      <div class="options">
+        <!-- A: italic chip -->
+        <div class="opt">
+          <div class="preview">
+            <div class="result-sticker">
+              <div class="cutout"></div>
+              <div class="label">Apple</div>
+              <div class="kcal">94 kcal</div>
+            </div>
+            <button class="adjust-a">different from expected? adjust</button>
+          </div>
+          <div class="meta">
+            <div class="letter">A</div>
+            <div class="name">Italic dashed chip</div>
+            <div class="desc">
+              Dashed outline, italic serif label, low contrast. Reads as a pencil annotation. Most
+              restrained — matches the framework's "chrome stays quiet" stance. Risk: too subtle.
+            </div>
+          </div>
+        </div>
+
+        <!-- B: small pill -->
+        <div class="opt">
+          <div class="preview">
+            <div class="result-sticker">
+              <div class="cutout"></div>
+              <div class="label">Apple</div>
+              <div class="kcal">94 kcal</div>
+            </div>
+            <button class="adjust-b"><span class="glyph">↻</span> Adjust</button>
+          </div>
+          <div class="meta">
+            <div class="letter">B</div>
+            <div class="name">Small white pill with kaki-iro glyph</div>
+            <div class="desc">
+              Tiny pill shaped like a button, retry glyph in warm signal, label in body sans. Reads
+              as "tap me." Clear affordance. Most product-like. Risk: feels closer to "fix the
+              broken thing" than "tweak this."
+            </div>
+          </div>
+        </div>
+
+        <!-- C: prose with link -->
+        <div class="opt">
+          <div class="preview">
+            <div class="result-sticker">
+              <div class="cutout"></div>
+              <div class="label">Apple</div>
+              <div class="kcal">94 kcal</div>
+            </div>
+            <div class="adjust-c">Different from expected? <a>tap to adjust</a></div>
+          </div>
+          <div class="meta">
+            <div class="letter">C</div>
+            <div class="name">Prose with inline link</div>
+            <div class="desc">
+              A whole sentence, italic serif gloss with a warm-signal underlined link verb. Reads as
+              a magazine caption. Most editorial. Honors the framework's "AI as craft, not magic"
+              most strongly — the recovery is written, not iconographic.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

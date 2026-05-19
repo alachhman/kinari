@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PolaroidSticker · mockup</title>
+    <style>
+      :root {
+        --kinari: #f7f5f0;
+        --sumi: #1a1a1a;
+        --sumi-muted: #6b6b6b;
+        --sumi-mute: #8a8a8a;
+        --kaki-iro: #d97a3c;
+        --shiro: #ffffff;
+        --shikon: #5b3d6e;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--kinari);
+        color: var(--sumi);
+        font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+        line-height: 1.55;
+        background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+        background-size: 14px 14px;
+        min-height: 100vh;
+      }
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 56px 28px 100px;
+      }
+      .back {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--sumi-mute);
+        text-decoration: none;
+        margin-bottom: 24px;
+      }
+      .back:hover {
+        color: var(--sumi);
+      }
+
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--sumi-mute);
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      h1 {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 36px;
+        text-align: center;
+        letter-spacing: -0.015em;
+      }
+      .sub {
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: var(--sumi-muted);
+        text-align: center;
+        font-size: 15px;
+        margin: 8px 0 36px;
+      }
+
+      .options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      @media (max-width: 760px) {
+        .options {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .opt {
+        background: var(--shiro);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow:
+          4px 4px 0 rgba(72, 55, 32, 0.07),
+          10px 18px 30px rgba(72, 55, 32, 0.1),
+          18px 30px 48px rgba(72, 55, 32, 0.06);
+      }
+      .opt .preview {
+        background: var(--kinari);
+        background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+        background-size: 10px 10px;
+        padding: 36px 28px;
+        min-height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .opt .meta {
+        padding: 18px 22px 22px;
+        border-top: 1px solid rgba(26, 26, 26, 0.06);
+      }
+      .opt .letter {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-style: italic;
+        color: var(--shikon);
+        font-size: 16px;
+      }
+      .opt .name {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 19px;
+        margin: 4px 0 8px;
+      }
+      .opt .desc {
+        color: #2a2a2a;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* --- POLAROID OPT A: TRADITIONAL --- */
+      .polaroid-a {
+        background: var(--shiro);
+        padding: 12px 12px 32px;
+        border-radius: 6px;
+        transform: rotate(-1.2deg);
+        box-shadow:
+          6px 8px 0 rgba(72, 55, 32, 0.08),
+          14px 22px 36px rgba(72, 55, 32, 0.12);
+        max-width: 240px;
+      }
+      .polaroid-a .photo {
+        width: 100%;
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, #8da4b3 0%, #b9c6cd 40%, #d4ddc8 100%);
+        border-radius: 2px;
+      }
+      .polaroid-a .caption {
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 14px;
+        color: var(--sumi-muted);
+        margin-top: 14px;
+        text-align: center;
+      }
+
+      /* --- POLAROID OPT B: KINARI-INFLUENCED --- */
+      .polaroid-b {
+        background: var(--shiro);
+        padding: 14px;
+        border-radius: 14px;
+        transform: rotate(-0.6deg);
+        box-shadow:
+          6px 8px 0 rgba(72, 55, 32, 0.08),
+          14px 22px 36px rgba(72, 55, 32, 0.12);
+        max-width: 240px;
+      }
+      .polaroid-b .photo {
+        width: 100%;
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, #8da4b3 0%, #b9c6cd 40%, #d4ddc8 100%);
+        border-radius: 8px;
+      }
+      .polaroid-b .caption {
+        font-family: -apple-system, system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        color: var(--sumi);
+        margin-top: 12px;
+        padding: 0 4px;
+      }
+      .polaroid-b .meta-num {
+        color: var(--kaki-iro);
+        font-style: italic;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: 11px;
+      }
+
+      /* --- POLAROID OPT C: AS A STICKER VARIANT (no new component) --- */
+      .polaroid-c {
+        background: var(--shiro);
+        border-radius: 14px;
+        padding: 14px 14px 30px;
+        transform: rotate(-0.5deg);
+        box-shadow:
+          4px 4px 0 rgba(72, 55, 32, 0.07),
+          10px 18px 30px rgba(72, 55, 32, 0.1);
+        max-width: 240px;
+      }
+      .polaroid-c .photo {
+        width: 100%;
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, #8da4b3 0%, #b9c6cd 40%, #d4ddc8 100%);
+        border-radius: 8px;
+      }
+      .polaroid-c .caption {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--sumi);
+        margin-top: 12px;
+        text-align: center;
+      }
+      .polaroid-c .caption em {
+        font-style: italic;
+        color: var(--sumi-muted);
+        font-size: 12px;
+        display: block;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="./">← back to mockups</a>
+      <div class="eyebrow">Question 01</div>
+      <h1>PolaroidSticker shape</h1>
+      <p class="sub">
+        Used when a subject can't be cleanly cut out — landscapes, scenes, abstract photography.<br />All
+        three have a tilt + warm-umber shadow. The differences are in proportions, caption
+        typography, and visual weight.
+      </p>
+
+      <div class="options" style="grid-template-columns: 1fr 1fr 1fr">
+        <!-- A: traditional -->
+        <div class="opt">
+          <div class="preview">
+            <div class="polaroid-a">
+              <div class="photo"></div>
+              <div class="caption">June · Maine coast</div>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="letter">A</div>
+            <div class="name">Traditional Polaroid</div>
+            <div class="desc">
+              Square photo, thick bottom border for handwriting-style caption. Strongest "physical
+              Polaroid" feel. Caption in italic serif. Bigger tilt (-1.2°).
+            </div>
+          </div>
+        </div>
+
+        <!-- B: kinari-influenced -->
+        <div class="opt">
+          <div class="preview">
+            <div class="polaroid-b">
+              <div class="photo"></div>
+              <div class="caption">Maine coast<br /><span class="meta-num">JUN 14</span></div>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="letter">B</div>
+            <div class="name">Kinari-influenced</div>
+            <div class="desc">
+              4:3 photo, more rounded corners, caption in chunky sans + kaki-iro date numeral.
+              Modern. Less obviously "Polaroid" — more like a card with a photo on top. Matches the
+              rest of the framework's visual vocabulary.
+            </div>
+          </div>
+        </div>
+
+        <!-- C: variant of existing -->
+        <div class="opt">
+          <div class="preview">
+            <div class="polaroid-c">
+              <div class="photo"></div>
+              <div class="caption">June · Maine<em>landscape</em></div>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="letter">C</div>
+            <div class="name">Sticker variant, no new component</div>
+            <div class="desc">
+              Don't add a new component. Just flesh out the existing
+              <code>&lt;Sticker variant="polaroid"&gt;</code> with proper caption styling, photo
+              aspect-ratio CSS, and a <code>caption</code> prop. Smallest API surface; treats
+              Polaroid as "Sticker with a caption."
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

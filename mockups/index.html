@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kinari mockups · v0.2 brainstorm</title>
+    <style>
+      :root {
+        --kinari: #f7f5f0;
+        --sumi: #1a1a1a;
+        --sumi-muted: #6b6b6b;
+        --sumi-mute: #8a8a8a;
+        --kaki-iro: #d97a3c;
+        --shiro: #ffffff;
+        --shikon: #5b3d6e;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--kinari);
+        color: var(--sumi);
+        font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.55;
+        background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+        background-size: 14px 14px;
+        min-height: 100vh;
+      }
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 56px 28px 100px;
+      }
+      h1 {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(40px, 6vw, 56px);
+        letter-spacing: -0.02em;
+        line-height: 1;
+        text-shadow: 4px 7px 0 rgba(72, 55, 32, 0.06);
+      }
+      .kanji {
+        font-family: Georgia, serif;
+        color: var(--sumi-mute);
+        font-size: 20px;
+        margin-top: 10px;
+        display: inline-block;
+        transform: rotate(-1deg);
+      }
+      .tagline {
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: var(--sumi-muted);
+        margin-top: 22px;
+      }
+      ul.list {
+        list-style: none;
+        margin: 40px 0 0;
+        padding: 0;
+      }
+      ul.list a {
+        display: block;
+        background: var(--shiro);
+        border-radius: 14px;
+        padding: 20px 24px;
+        margin: 14px 0;
+        text-decoration: none;
+        color: var(--sumi);
+        box-shadow:
+          4px 4px 0 rgba(72, 55, 32, 0.07),
+          10px 18px 30px rgba(72, 55, 32, 0.1);
+        transition: transform 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+      ul.list a:hover {
+        transform: translateY(-2px) rotate(-0.3deg);
+      }
+      .label {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 18px;
+        display: block;
+      }
+      .desc {
+        color: var(--sumi-muted);
+        font-size: 14px;
+        margin-top: 4px;
+        font-family: Georgia, serif;
+        font-style: italic;
+      }
+      .num {
+        color: var(--kaki-iro);
+        font-weight: 800;
+        font-style: italic;
+        font-size: 22px;
+        margin-right: 10px;
+        letter-spacing: -0.03em;
+      }
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--sumi-mute);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Kinari · Mockups</h1>
+      <div class="kanji">生成 · v0.2 brainstorm</div>
+      <p class="tagline">
+        Three visual design questions for the polish + additions round.<br />Click each and tell me
+        back which option you want.
+      </p>
+
+      <ul class="list">
+        <li>
+          <a href="./polaroid-sticker.html">
+            <span class="label"><span class="num">01</span>PolaroidSticker shape</span>
+            <span class="desc">For un-maskable photos — landscapes, scenes, abstract</span>
+          </a>
+        </li>
+        <li>
+          <a href="./empty-state.html">
+            <span class="label"><span class="num">02</span>EmptyState design</span>
+            <span class="desc">What DotGridCanvas does before any content lands</span>
+          </a>
+        </li>
+        <li>
+          <a href="./adjust-affordance.html">
+            <span class="label"><span class="num">03</span>AdjustAffordance shape</span>
+            <span class="desc">"Different from expected? tap to adjust" recovery</span>
+          </a>
+        </li>
+      </ul>
+
+      <footer>3 mockups · pick one option each</footer>
+    </main>
+  </body>
+</html>

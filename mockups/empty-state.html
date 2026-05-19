@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EmptyState · mockup</title>
+    <style>
+      :root {
+        --kinari: #f7f5f0;
+        --sumi: #1a1a1a;
+        --sumi-muted: #6b6b6b;
+        --sumi-mute: #8a8a8a;
+        --kaki-iro: #d97a3c;
+        --shiro: #ffffff;
+        --shikon: #5b3d6e;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--kinari);
+        color: var(--sumi);
+        font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+        line-height: 1.55;
+        background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+        background-size: 14px 14px;
+        min-height: 100vh;
+      }
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 56px 28px 100px;
+      }
+      .back {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--sumi-mute);
+        text-decoration: none;
+        margin-bottom: 24px;
+      }
+      .back:hover {
+        color: var(--sumi);
+      }
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--sumi-mute);
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      h1 {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 36px;
+        text-align: center;
+        letter-spacing: -0.015em;
+      }
+      .sub {
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: var(--sumi-muted);
+        text-align: center;
+        font-size: 15px;
+        margin: 8px 0 36px;
+      }
+
+      .options {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 28px;
+      }
+      @media (max-width: 900px) {
+        .options {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .opt {
+        background: var(--shiro);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow:
+          4px 4px 0 rgba(72, 55, 32, 0.07),
+          10px 18px 30px rgba(72, 55, 32, 0.1);
+      }
+      .opt .preview {
+        background: var(--kinari);
+        background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+        background-size: 10px 10px;
+        padding: 36px 24px;
+        min-height: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .opt .meta {
+        padding: 18px 22px 22px;
+        border-top: 1px solid rgba(26, 26, 26, 0.06);
+      }
+      .opt .letter {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-style: italic;
+        color: var(--shikon);
+        font-size: 16px;
+      }
+      .opt .name {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 19px;
+        margin: 4px 0 8px;
+      }
+      .opt .desc {
+        color: #2a2a2a;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* --- OPT A: minimal text only --- */
+      .empty-a {
+        text-align: center;
+        max-width: 280px;
+      }
+      .empty-a h3 {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 22px;
+        color: var(--sumi);
+      }
+      .empty-a p {
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: var(--sumi-muted);
+        font-size: 15px;
+        margin: 14px 0 24px;
+        line-height: 1.6;
+      }
+      .empty-a button {
+        background: var(--shiro);
+        border: 2px solid var(--sumi);
+        border-radius: 999px;
+        padding: 10px 22px;
+        font-family: -apple-system, system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        color: var(--sumi);
+        cursor: pointer;
+        box-shadow: 3px 4px 0 rgba(72, 55, 32, 0.1);
+      }
+
+      /* --- OPT B: kanji icon + bilingual title --- */
+      .empty-b {
+        text-align: center;
+        max-width: 280px;
+      }
+      .empty-b .icon {
+        font-family: Georgia, serif;
+        font-size: 56px;
+        color: var(--sumi-mute);
+        line-height: 1;
+        transform: rotate(-2deg);
+        display: inline-block;
+        text-shadow: 4px 6px 0 rgba(72, 55, 32, 0.06);
+        margin-bottom: 18px;
+      }
+      .empty-b h3 {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 22px;
+        color: var(--sumi);
+      }
+      .empty-b .kana {
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--sumi-mute);
+        margin-top: 6px;
+      }
+      .empty-b p {
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: var(--sumi-muted);
+        font-size: 14px;
+        margin: 16px 0 24px;
+      }
+      .empty-b button {
+        background: var(--shikon);
+        color: var(--shiro);
+        border: none;
+        border-radius: 999px;
+        padding: 10px 22px;
+        font-family: -apple-system, system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        box-shadow: 4px 5px 0 rgba(91, 61, 110, 0.2);
+      }
+
+      /* --- OPT C: ghost sticker placeholder --- */
+      .empty-c {
+        text-align: center;
+        max-width: 280px;
+      }
+      .ghost-sticker {
+        width: 120px;
+        height: 120px;
+        background: rgba(26, 26, 26, 0.04);
+        border: 2px dashed rgba(26, 26, 26, 0.18);
+        border-radius: 14px;
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(-1deg);
+        font-family: Georgia, serif;
+        font-size: 42px;
+        color: rgba(26, 26, 26, 0.18);
+      }
+      .empty-c h3 {
+        font-family: Georgia, serif;
+        font-weight: 600;
+        font-size: 18px;
+        color: var(--sumi);
+      }
+      .empty-c p {
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: var(--sumi-muted);
+        font-size: 13px;
+        margin: 12px 0 20px;
+      }
+      .empty-c button {
+        background: var(--shiro);
+        border: none;
+        border-radius: 999px;
+        padding: 10px 22px;
+        font-family: -apple-system, system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        color: var(--sumi);
+        cursor: pointer;
+        box-shadow: 3px 4px 0 rgba(72, 55, 32, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="./">← back to mockups</a>
+      <div class="eyebrow">Question 02</div>
+      <h1>EmptyState design</h1>
+      <p class="sub">
+        What DotGridCanvas shows before any user content has landed.<br />The CTA pattern should
+        feel inviting, not nag — restraint is the framework's stance.
+      </p>
+
+      <div class="options">
+        <!-- A: minimal text -->
+        <div class="opt">
+          <div class="preview">
+            <div class="empty-a">
+              <h3>Your diary is empty.</h3>
+              <p>Nothing to see yet. Capture your first artifact to begin.</p>
+              <button>+ Begin</button>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="letter">A</div>
+            <div class="name">Quiet text</div>
+            <div class="desc">
+              Just a title + italic gloss + outline button. No icon, no illustration. Most
+              restrained option — leans hardest on "the page is a workspace, the absence is the
+              message."
+            </div>
+          </div>
+        </div>
+
+        <!-- B: kanji icon + bilingual -->
+        <div class="opt">
+          <div class="preview">
+            <div class="empty-b">
+              <div class="icon">空</div>
+              <h3>Your diary is empty.</h3>
+              <div class="kana">kara · empty</div>
+              <p>Nothing to see yet.<br />Capture your first artifact.</p>
+              <button>+ Begin</button>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="letter">B</div>
+            <div class="name">Kanji + bilingual + accent CTA</div>
+            <div class="desc">
+              A single kanji glyph (空 <em>kara</em> = empty) gives the page weight. Filled accent
+              button. More authored, more visually structured. Risk: looks "designed" rather than
+              "calm."
+            </div>
+          </div>
+        </div>
+
+        <!-- C: ghost sticker -->
+        <div class="opt">
+          <div class="preview">
+            <div class="empty-c">
+              <div class="ghost-sticker">+</div>
+              <h3>Tap to add your first sticker.</h3>
+              <p>The page fills as you collect.</p>
+              <button>+ Add</button>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="letter">C</div>
+            <div class="name">Ghost sticker placeholder</div>
+            <div class="desc">
+              Dashed-outline sticker silhouette teaches "things go here." Makes the affordance
+              literal. Uses the framework's primary noun (sticker) to talk about itself. Best for
+              first-time onboarding flows.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
