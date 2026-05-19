@@ -1,0 +1,41 @@
+.pair {
+  display: inline-flex;
+  line-height: 1;
+  color: var(--sumi);
+}
+
+.stacked {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4em;
+}
+.inline {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.6em;
+}
+
+.primary {
+  font-family: Georgia, serif;
+  font-weight: 600;
+  color: var(--sumi);
+}
+
+.secondary {
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.42em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sumi-mute);
+}
+
+.small .primary {
+  font-size: 14px;
+}
+.medium .primary {
+  font-size: 22px;
+}
+.large .primary {
+  font-size: 32px;
+}

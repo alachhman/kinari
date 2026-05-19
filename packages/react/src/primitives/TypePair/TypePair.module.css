@@ -1,0 +1,21 @@
+.display {
+  font-family: Georgia, "Newsreader", serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--sumi);
+}
+
+.label {
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--sumi);
+}
+
+.body {
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--sumi-soft);
+}

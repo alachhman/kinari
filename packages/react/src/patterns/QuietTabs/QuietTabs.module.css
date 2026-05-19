@@ -1,0 +1,43 @@
+.bar {
+  position: fixed;
+  bottom: var(--space-nav-pill-offset);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  background: var(--shiro);
+  padding: 4px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-umber-resting);
+  z-index: 100;
+  gap: 0;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--sumi);
+  position: relative;
+  transition: color var(--duration-chip) var(--ease-tawami);
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.tab[aria-current="page"] {
+  background: var(--accent, var(--shikon));
+  color: var(--shiro);
+  transition:
+    background var(--duration-chip) var(--ease-tawami),
+    color var(--duration-chip) var(--ease-tawami);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--shikon);
+  outline-offset: 3px;
+}

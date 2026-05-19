@@ -1,0 +1,11 @@
+node_modules
+dist
+build
+.next
+.astro
+pnpm-lock.yaml
+
+# Framework markdown documents — authored before this prettier config; do not reformat
+README.md
+CHANGELOG.md
+docs/

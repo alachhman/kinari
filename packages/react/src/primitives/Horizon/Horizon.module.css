@@ -1,0 +1,30 @@
+.horizon {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: var(--space-section-gap) 0 calc(var(--space-section-gap) * 0.6);
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(26, 26, 26, 0.18), transparent);
+}
+
+.mark {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: var(--sumi-mute);
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+}
+
+.tight {
+  margin: calc(var(--space-section-gap) * 0.5) 0;
+}
+.normal {
+  margin: var(--space-section-gap) 0;
+}
+.loose {
+  margin: calc(var(--space-section-gap) * 1.5) 0;
+}

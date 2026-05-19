@@ -1,0 +1,44 @@
+.sticker {
+  --sticker-rotation: 0deg;
+  background: var(--shiro);
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-umber-resting);
+  transform: rotate(var(--sticker-rotation));
+  transition:
+    transform var(--duration-sticker) var(--ease-tawami),
+    box-shadow var(--duration-sticker) var(--ease-tawami);
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.sticker:hover,
+.sticker:focus-visible {
+  transform: translateY(-3px) rotate(0deg);
+  box-shadow: var(--shadow-umber-floating);
+}
+
+.sticker:focus-visible {
+  outline: 2px solid var(--shikon);
+  outline-offset: 3px;
+}
+
+.floating {
+  box-shadow: var(--shadow-umber-floating);
+}
+
+.polaroid {
+  padding: 14px 14px 36px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker {
+    transition: none;
+  }
+  .sticker:hover,
+  .sticker:focus-visible {
+    transform: rotate(var(--sticker-rotation));
+  }
+}

@@ -1,0 +1,46 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  border: none;
+  background: var(--shiro);
+  color: var(--sumi);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-umber-resting);
+  transition:
+    transform var(--duration-cross-fade) var(--ease-tawami),
+    box-shadow var(--duration-cross-fade) var(--ease-tawami);
+  font-size: 20px;
+}
+
+.flank {
+  width: 48px;
+  height: 48px;
+}
+
+.center {
+  width: 60px;
+  height: 60px;
+  background: var(--accent, var(--shikon));
+  color: var(--shiro);
+  font-size: 24px;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--shikon);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

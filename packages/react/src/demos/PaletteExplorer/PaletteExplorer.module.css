@@ -1,0 +1,47 @@
+.explorer {
+  background: var(--shiro);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: var(--shadow-umber-resting);
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.swatch {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-umber-contact);
+  transition: transform var(--duration-cross-fade) var(--ease-tawami);
+}
+
+.swatch:focus-visible {
+  outline: 2px solid var(--sumi);
+  outline-offset: 4px;
+}
+
+.swatch[data-selected="true"] {
+  transform: scale(1.12);
+  box-shadow: var(--shadow-umber-resting);
+}
+
+.preview {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--kinari);
+  background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+  background-size: 14px 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.customRow {
+  margin-top: 12px;
+}
