@@ -9,7 +9,10 @@ export const PRINCIPLES: Record<PrincipleNumber, { slug: string; name: string }>
   6: { slug: "06-time-is-the-spine", name: "Time is the spine" },
   7: { slug: "07-bilingual-is-first-class", name: "Bilingual is first-class" },
   8: { slug: "08-ai-feels-like-craft-not-magic", name: "AI feels like craft, not magic" },
-  9: { slug: "09-the-background-is-a-workspace-not-a-frame", name: "The background is a workspace" },
+  9: {
+    slug: "09-the-background-is-a-workspace-not-a-frame",
+    name: "The background is a workspace",
+  },
   10: { slug: "10-imperfections-are-signatures", name: "Imperfections are signatures" },
 };
 

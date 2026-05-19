@@ -28,9 +28,7 @@ export function QuietTabs({ tabs, active, accent, hidden }: QuietTabsProps) {
       : accent
     : undefined;
 
-  const style: CSSProperties = accentColor
-    ? ({ "--accent": accentColor } as CSSProperties)
-    : {};
+  const style: CSSProperties = accentColor ? ({ "--accent": accentColor } as CSSProperties) : {};
 
   return (
     <nav

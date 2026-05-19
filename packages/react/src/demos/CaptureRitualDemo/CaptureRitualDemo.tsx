@@ -7,10 +7,7 @@ export interface CaptureRitualDemoProps {
   accent?: AccentName | string;
 }
 
-export function CaptureRitualDemo({
-  subject = "🍎",
-  accent: _accent,
-}: CaptureRitualDemoProps) {
+export function CaptureRitualDemo({ subject = "🍎", accent: _accent }: CaptureRitualDemoProps) {
   const [state, setState] = useState<"idle" | "blooming" | "settled">("idle");
 
   const fire = () => {

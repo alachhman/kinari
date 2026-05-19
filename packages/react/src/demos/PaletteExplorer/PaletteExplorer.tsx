@@ -8,14 +8,7 @@ export interface PaletteExplorerProps {
   allowCustom?: boolean;
 }
 
-const ACCENT_NAMES: AccentName[] = [
-  "moegi",
-  "kakishibu",
-  "sakura",
-  "asagi",
-  "yamabuki",
-  "shikon",
-];
+const ACCENT_NAMES: AccentName[] = ["moegi", "kakishibu", "sakura", "asagi", "yamabuki", "shikon"];
 
 export function PaletteExplorer({
   defaultAccent = "shikon",

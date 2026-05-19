@@ -37,11 +37,7 @@ export function SoftSpringDemo({ scenario = "sticker-settle" }: SoftSpringDemoPr
           >
             chrome
           </div>
-          <div
-            className={`${styles.tile} ${styles.text}`}
-            data-cascade="text"
-            data-state={state}
-          >
+          <div className={`${styles.tile} ${styles.text}`} data-cascade="text" data-state={state}>
             text lands last
           </div>
         </div>

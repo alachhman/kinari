@@ -66,13 +66,7 @@ export function Sticker({
   }
   if (as === "button") {
     return (
-      <button
-        {...dataAttrs}
-        type="button"
-        className={classNames}
-        style={style}
-        onClick={onClick}
-      >
+      <button {...dataAttrs} type="button" className={classNames} style={style} onClick={onClick}>
         {children}
       </button>
     );

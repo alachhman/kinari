@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kinari-docs-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "markserv@1.17.4", "-p", "8642", "-a", "127.0.0.1", "."],
+      "port": 8642
+    },
+    {
+      "name": "kinari-component-preview",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@kinari/preview", "dev"],
+      "port": 5180
+    }
+  ]
+}

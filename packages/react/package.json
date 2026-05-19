@@ -15,7 +15,10 @@
       "import": "./src/demos/index.ts"
     }
   },
-  "files": ["src", "README.md"],
+  "files": [
+    "src",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc --noEmit",
     "dev": "tsc --noEmit --watch",

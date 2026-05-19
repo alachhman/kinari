@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--kinari);
+  color: var(--sumi);
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+  background-size: 14px 14px;
+  min-height: 100vh;
+}
+
+.preview-page {
+  max-width: var(--space-content-sticker, 880px);
+  margin: 0 auto;
+  padding: 60px 32px 160px;
+}
+
+.preview-hero {
+  text-align: center;
+  padding: 28px 0 8px;
+}
+
+.preview-hero-name {
+  font-family: Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(60px, 10vw, 110px);
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+  text-shadow: 5px 8px 0 rgba(72, 55, 32, 0.06);
+  margin: 0;
+}
+
+.preview-hero-kanji {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  color: var(--sumi-mute);
+  margin-top: 10px;
+  display: inline-block;
+  transform: rotate(-1.1deg);
+  text-shadow: 3px 5px 0 rgba(72, 55, 32, 0.05);
+}
+
+.preview-tagline {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--sumi-soft);
+  font-size: 18px;
+  margin: 28px 0 0;
+}
+
+.preview-section {
+  margin-top: 64px;
+}
+
+.preview-section-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sumi-mute);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.preview-section-title {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-weight: 600;
+  font-size: 28px;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.preview-section-sub {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--sumi-muted);
+  font-size: 15px;
+  margin: 0 0 32px;
+}
+
+.preview-block {
+  margin: 28px 0 12px;
+}
+
+.preview-block-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(26, 26, 26, 0.12);
+}
+
+.preview-block-name {
+  font-family: Georgia, serif;
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--sumi);
+}
+
+.preview-block-desc {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--sumi-muted);
+}
+
+.preview-block-body {
+  padding: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  min-height: 60px;
+}
+
+.preview-pattern-stage {
+  position: relative;
+  background: var(--shiro);
+  border-radius: 18px;
+  height: 220px;
+  width: 100%;
+  margin-top: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-umber-resting);
+  background-image: radial-gradient(circle, rgba(26, 26, 26, 0.13) 1px, transparent 1px);
+  background-size: 14px 14px;
+  background-color: var(--kinari);
+  /* Establish a containing block for the patterns' position: fixed children */
+  transform: translateZ(0);
+  contain: paint;
+}
+
+/* Override the patterns' position: fixed inside the preview stage —
+   keep them contained instead of glued to the viewport. */
+.preview-pattern-stage [data-kinari-component="nav-pill"],
+.preview-pattern-stage [data-kinari-component="quiet-tabs"] {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-0.3deg);
+}
+
+.preview-pattern-stage [data-kinari-component="quiet-tabs"] {
+  transform: translateX(-50%);
+}
+
+.preview-pattern-stage [data-kinari-component="single-button"] {
+  position: relative;
+}
+
+.preview-pattern-stage > div:has([data-kinari-component="single-button"]) {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-pattern-stage [data-kinari-component="three-circles"] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

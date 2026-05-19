@@ -44,9 +44,13 @@ describe("<Sticker>", () => {
 
   it("uses a stable rotation per mount when none is passed", () => {
     const { container, rerender } = render(<Sticker>x</Sticker>);
-    const first = (container.firstChild as HTMLElement).style.getPropertyValue("--sticker-rotation");
+    const first = (container.firstChild as HTMLElement).style.getPropertyValue(
+      "--sticker-rotation",
+    );
     rerender(<Sticker>y</Sticker>);
-    const second = (container.firstChild as HTMLElement).style.getPropertyValue("--sticker-rotation");
+    const second = (container.firstChild as HTMLElement).style.getPropertyValue(
+      "--sticker-rotation",
+    );
     expect(first).toBe(second);
   });
 });
