@@ -1,0 +1,67 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.glyph {
+  font-family: Georgia, serif;
+  font-size: 56px;
+  color: var(--sumi-mute);
+  line-height: 1;
+  transform: rotate(-2deg);
+  display: inline-block;
+  text-shadow: 4px 6px 0 rgba(72, 55, 32, 0.06);
+  margin-bottom: 18px;
+}
+
+.title {
+  font-family: Georgia, serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--sumi);
+  margin: 0;
+}
+
+.reading {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sumi-mute);
+  margin-top: 6px;
+}
+
+.body {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--sumi-muted);
+  font-size: 14px;
+  margin: 16px 0 24px;
+  line-height: 1.6;
+}
+
+.action {
+  background: var(--accent, var(--shikon));
+  color: var(--shiro);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: var(--action-shadow, 4px 5px 0 rgba(91, 61, 110, 0.2));
+  transition: transform var(--duration-cross-fade) var(--ease-tawami);
+}
+.action:hover {
+  transform: translateY(-1px);
+}
+.action:focus-visible {
+  outline: 2px solid var(--sumi);
+  outline-offset: 3px;
+}
