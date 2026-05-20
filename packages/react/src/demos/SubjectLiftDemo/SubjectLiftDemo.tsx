@@ -1,7 +1,8 @@
 import { useState } from "react";
-import styles from "./SubjectLiftDemo.module.css";
+import { ShimmerDust } from "../../primitives/ShimmerDust";
 import cutoutUrl from "./assets/apple-cutout.png?url";
 import contextUrl from "./assets/apple-on-counter.jpg?url";
+import styles from "./SubjectLiftDemo.module.css";
 
 export interface SubjectLiftDemoProps {
   src?: string;
@@ -22,9 +23,10 @@ export function SubjectLiftDemo({
   return (
     <div className={styles.demo}>
       <div className={styles.stage} data-state={state}>
-        <img src={context} alt="" className={styles.context} aria-hidden="true" />
-        <img src={src} alt="" className={styles.subject} aria-hidden="true" />
-        <div className={styles.shimmer} aria-hidden="true" />
+        <ShimmerDust active={state === "shimmering"}>
+          <img src={context} alt="" className={styles.context} aria-hidden="true" />
+          <img src={src} alt="" className={styles.subject} aria-hidden="true" />
+        </ShimmerDust>
         <div aria-live="polite" style={{ position: "absolute", left: "-9999px" }}>
           {state === "lifted" ? "Subject lifted" : ""}
         </div>
