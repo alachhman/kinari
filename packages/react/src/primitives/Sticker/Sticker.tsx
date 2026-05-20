@@ -34,8 +34,10 @@ export function Sticker({
   onClick,
   className,
 }: StickerProps) {
-  // `useState` initializer is guaranteed to run exactly once even under
-  // React 19 StrictMode's intentional double-mount in dev.
+  // Use `useState` (not `useMemo`) for stable-per-mount values. The committed
+  // state survives React 19 StrictMode's simulated remount in dev; `useMemo`
+  // with `[]` deps technically works the same here, but `useState` more clearly
+  // signals "remember this once" and avoids the eslint-disable.
   const [stableRotation] = useState<number>(() => rotation ?? Math.random() * 2.3 - 1.2);
 
   const accentHex =

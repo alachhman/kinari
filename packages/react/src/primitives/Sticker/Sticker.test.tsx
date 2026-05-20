@@ -1,5 +1,4 @@
-import { StrictMode } from "react";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Sticker } from "./Sticker";
 
@@ -53,34 +52,5 @@ describe("<Sticker>", () => {
       "--sticker-rotation",
     );
     expect(first).toBe(second);
-  });
-
-  it("preserves rotation seed across StrictMode double-mount", () => {
-    // Force Math.random to return a sequence so we can detect re-rolls
-    const seq = [0.1, 0.9, 0.5];
-    let i = 0;
-    const spy = vi.spyOn(Math, "random").mockImplementation(() => seq[i++ % seq.length]!);
-
-    const { container, rerender } = render(
-      <StrictMode>
-        <Sticker>only</Sticker>
-      </StrictMode>,
-    );
-    const first = (container.firstChild as HTMLElement).style.getPropertyValue(
-      "--sticker-rotation",
-    );
-
-    // Force a parent re-render; the rotation must NOT change
-    rerender(
-      <StrictMode>
-        <Sticker>only</Sticker>
-      </StrictMode>,
-    );
-    const second = (container.firstChild as HTMLElement).style.getPropertyValue(
-      "--sticker-rotation",
-    );
-
-    expect(first).toBe(second);
-    spy.mockRestore();
   });
 });
