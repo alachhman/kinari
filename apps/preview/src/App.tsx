@@ -7,6 +7,8 @@ import {
   Display,
   Label,
   Body,
+  EmptyState,
+  AdjustAffordance,
   NavPill,
   QuietTabs,
   SingleButton,
@@ -63,15 +65,24 @@ export function App() {
             <Sticker lift="floating">
               <Display as="h3">Floating</Display>
             </Sticker>
-            <Sticker accent="moegi">
+            <Sticker shadowAccent="moegi">
               <span style={{ color: "var(--moegi)", fontWeight: 700, fontSize: 14 }}>
                 moegi shadow
               </span>
             </Sticker>
-            <Sticker accent="shikon">
+            <Sticker shadowAccent="shikon">
               <span style={{ color: "var(--shikon)", fontWeight: 700, fontSize: 14 }}>
                 shikon shadow
               </span>
+            </Sticker>
+            <Sticker variant="polaroid" caption="Maine coast · June" photoAspect="4/3">
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background: "linear-gradient(135deg, #8da4b3 0%, #b9c6cd 40%, #d4ddc8 100%)",
+                }}
+              />
             </Sticker>
           </div>
         </div>
@@ -139,6 +150,41 @@ export function App() {
             <Display as="h3">Display · serif 600</Display>
             <Label>LABEL · CHUNKY SANS 800</Label>
             <Body>Body — running prose, 14–16px, comfortable line-height.</Body>
+          </div>
+        </div>
+      </section>
+
+      <Horizon mark="*" />
+
+      {/* ─── NEW IN v0.2 ─────────────────────────────────────── */}
+      <section className="preview-section">
+        <div className="preview-section-eyebrow">layer 01.5</div>
+        <h2 className="preview-section-title">New in v0.2</h2>
+        <p className="preview-section-sub">Empty state · Adjust affordance.</p>
+
+        <div className="preview-block">
+          <div className="preview-block-head">
+            <span className="preview-block-name">&lt;EmptyState&gt;</span>
+            <span className="preview-block-desc">kanji + bilingual + accent CTA</span>
+          </div>
+          <EmptyState
+            glyph="空"
+            title="Your diary is empty."
+            reading="kara · empty"
+            body="Nothing to see yet. Capture your first artifact to begin."
+            action={{ label: "+ Begin", onClick: () => {} }}
+            accent="shikon"
+          />
+        </div>
+
+        <div className="preview-block">
+          <div className="preview-block-head">
+            <span className="preview-block-name">&lt;AdjustAffordance&gt;</span>
+            <span className="preview-block-desc">AI-result recovery pill</span>
+          </div>
+          <div className="preview-block-body">
+            <AdjustAffordance onAdjust={() => {}} />
+            <AdjustAffordance onAdjust={() => {}} label="Refine" size="small" />
           </div>
         </div>
       </section>
