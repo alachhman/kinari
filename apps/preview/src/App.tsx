@@ -307,10 +307,7 @@ export function App() {
             <span className="preview-block-name">&lt;SubjectLiftDemo&gt;</span>
             <span className="preview-block-desc">Pattern #05 — shimmer cutout</span>
           </div>
-          <SubjectLiftDemo
-            src="https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=400&auto=format&fit=crop"
-            context="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&auto=format&fit=crop"
-          />
+          <SubjectLiftDemo />
         </div>
 
         <div className="preview-block">
@@ -334,7 +331,7 @@ export function App() {
           textTransform: "uppercase",
         }}
       >
-        Kinari library v0.1 · this is a preview, not the public site
+        Kinari library v0.2 · this is a preview, not the public site
       </footer>
     </div>
   );
