@@ -8,10 +8,15 @@ const seen = new Set<string>();
 export function warnOnceForCallSite(message: string): void {
   if (typeof process !== "undefined" && process.env?.NODE_ENV === "production") return;
 
-  // Use Error stack to identify the call site
+  // Use Error stack to identify the call site.
+  // Different engines format stacks differently (V8 includes "Error" header,
+  // JavaScriptCore does not). Locate this function's frame first, then take
+  // the next 1-2 frames as the caller identity.
   const stack = new Error().stack ?? "";
-  // Strip the first two lines (Error message + this function itself)
-  const callSite = stack.split("\n").slice(2, 4).join("\n");
+  const lines = stack.split("\n");
+  const selfIdx = lines.findIndex((l) => l.includes("warnOnceForCallSite"));
+  const start = selfIdx >= 0 ? selfIdx + 1 : 0;
+  const callSite = lines.slice(start, start + 2).join("\n");
 
   const key = message + "::" + callSite;
   if (seen.has(key)) return;
