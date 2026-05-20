@@ -33,7 +33,12 @@ export function ThreeCircles({ left, center, right, accent }: ThreeCirclesProps)
     : {};
 
   return (
-    <div data-kinari-component="three-circles" className={styles.row}>
+    <div
+      data-kinari-component="three-circles"
+      className={styles.row}
+      role="group"
+      aria-label="Decision"
+    >
       <button
         type="button"
         data-role="left"

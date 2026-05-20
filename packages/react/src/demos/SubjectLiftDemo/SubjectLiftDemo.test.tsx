@@ -27,4 +27,9 @@ describe("<SubjectLiftDemo>", () => {
       expect(src).toMatch(/apple-(cutout|on-counter)/);
     });
   });
+
+  it("renders a polite live region for lift announcements", () => {
+    const { container } = render(<SubjectLiftDemo />);
+    expect(container.querySelector('[aria-live="polite"]')).toBeInTheDocument();
+  });
 });

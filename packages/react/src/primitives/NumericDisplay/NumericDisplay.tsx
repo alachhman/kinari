@@ -40,6 +40,7 @@ export function NumericDisplay({
       data-kinari-component="numeric-display"
       className={clsx(styles.numeric, styles[font], className)}
       style={style}
+      aria-label={displayUnit ? `${value} ${displayUnit}` : undefined}
     >
       <span>{value}</span>
       {displayUnit && <span className={styles.unit}>{displayUnit}</span>}

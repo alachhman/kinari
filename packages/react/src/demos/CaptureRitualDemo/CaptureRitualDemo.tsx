@@ -35,6 +35,9 @@ export function CaptureRitualDemo({ subject = "🍎", accent: _accent }: Capture
           onClick={fire}
           aria-label="Capture"
         />
+        <div aria-live="polite" style={{ position: "absolute", left: "-9999px" }}>
+          {state === "settled" ? "Capture complete" : ""}
+        </div>
       </div>
       <button type="button" className={styles.replay} onClick={reset} aria-label="Replay">
         ↻ replay

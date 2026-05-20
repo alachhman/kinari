@@ -28,4 +28,15 @@ describe("<DiarySpineDemo>", () => {
     fireEvent.click(b);
     expect(container.querySelector('[data-focus="true"]')).toBeNull();
   });
+
+  it("reflects focus via aria-expanded on each entry", () => {
+    const entries = [
+      { id: "a", sticker: <span>A</span>, detail: <span>A!</span> },
+      { id: "b", sticker: <span>B</span>, detail: <span>B!</span> },
+    ];
+    const { container } = render(<DiarySpineDemo entries={entries} />);
+    const buttons = container.querySelectorAll("[aria-expanded]");
+    expect(buttons.length).toBe(2);
+    buttons.forEach((b) => expect(b.getAttribute("aria-expanded")).toBe("false"));
+  });
 });

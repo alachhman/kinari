@@ -62,7 +62,7 @@ export function NavPill({ steps, current, onNavigate, keyboard = true }: NavPill
         <span className={styles.zoneLabel}>← prev</span>
       </a>
 
-      <div className={styles.center}>
+      <div className={styles.center} aria-current="step">
         {currentStep && (
           <BilingualPair
             primary={currentStep.titleJa}

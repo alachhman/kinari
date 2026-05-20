@@ -55,4 +55,13 @@ describe("<NavPill>", () => {
     fireEvent.keyDown(window, { key: "ArrowRight" });
     expect(onNavigate).toHaveBeenCalledWith(2, "next");
   });
+
+  it("marks the current breadcrumb as aria-current='step'", () => {
+    const steps = [
+      { href: "/a", titleJa: "あ", titleEn: "a" },
+      { href: "/b", titleJa: "い", titleEn: "b" },
+    ];
+    const { container } = render(<NavPill steps={steps} current={1} />);
+    expect(container.querySelector('[aria-current="step"]')).toBeInTheDocument();
+  });
 });

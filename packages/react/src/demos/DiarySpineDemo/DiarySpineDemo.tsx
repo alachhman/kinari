@@ -28,6 +28,7 @@ export function DiarySpineDemo({ entries }: DiarySpineDemoProps) {
               data-entry-id={e.id}
               data-focus={isFocused}
               data-blurred={isBlurred}
+              aria-expanded={isFocused}
               className={styles.entry}
               onClick={() => setFocused(isFocused ? null : e.id)}
             >

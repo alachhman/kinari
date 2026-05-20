@@ -25,6 +25,9 @@ export function SubjectLiftDemo({
         <img src={context} alt="" className={styles.context} aria-hidden="true" />
         <img src={src} alt="" className={styles.subject} aria-hidden="true" />
         <div className={styles.shimmer} aria-hidden="true" />
+        <div aria-live="polite" style={{ position: "absolute", left: "-9999px" }}>
+          {state === "lifted" ? "Subject lifted" : ""}
+        </div>
       </div>
       <button type="button" className={styles.cta} onClick={lift} aria-label="Lift subject">
         Lift subject ↑

@@ -56,6 +56,7 @@ export function SingleButton({
           className={styles.button}
           style={style}
           onClick={handleClick}
+          aria-label={typeof title === "string" ? title : undefined}
         >
           {shape}
         </button>

@@ -40,4 +40,15 @@ describe("<ThreeCircles>", () => {
     const center = container.querySelector('[data-role="center"]');
     expect(center).toHaveAttribute("data-role", "center");
   });
+
+  it("groups the row as a decision group", () => {
+    const { container } = render(
+      <ThreeCircles
+        left={{ icon: "L", label: "L", onTap: () => {} }}
+        center={{ icon: "C", label: "C", onTap: () => {} }}
+        right={{ icon: "R", label: "R", onTap: () => {} }}
+      />,
+    );
+    expect(container.querySelector('[role="group"][aria-label="Decision"]')).toBeInTheDocument();
+  });
 });

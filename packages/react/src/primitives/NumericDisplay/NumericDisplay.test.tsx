@@ -28,4 +28,10 @@ describe("<NumericDisplay>", () => {
     const { container } = render(<NumericDisplay value={1} />);
     expect(container.firstChild).toHaveAttribute("data-kinari-component", "numeric-display");
   });
+
+  it("sets aria-label combining value and unit", () => {
+    render(<NumericDisplay value={94} unit="kcal" />);
+    const el = screen.getByLabelText("94 kcal");
+    expect(el).toBeInTheDocument();
+  });
 });

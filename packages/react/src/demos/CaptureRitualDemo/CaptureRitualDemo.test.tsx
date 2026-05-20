@@ -21,4 +21,9 @@ describe("<CaptureRitualDemo>", () => {
     fireEvent.click(screen.getByRole("button", { name: /replay/i }));
     expect(container.querySelector('[data-state="idle"]')).toBeInTheDocument();
   });
+
+  it("renders a polite live region for capture announcements", () => {
+    const { container } = render(<CaptureRitualDemo />);
+    expect(container.querySelector('[aria-live="polite"]')).toBeInTheDocument();
+  });
 });
