@@ -1,4 +1,4 @@
-import { type CSSProperties, type ReactNode, useMemo } from "react";
+import { type CSSProperties, type ReactNode, useState } from "react";
 import clsx from "clsx";
 import { shadowFromAccent } from "../../utils";
 import { type AccentName, colors } from "@kinari/tokens";
@@ -34,11 +34,9 @@ export function Sticker({
   onClick,
   className,
 }: StickerProps) {
-  const stableRotation = useMemo(() => {
-    if (rotation !== undefined) return rotation;
-    return Math.random() * 2.3 - 1.2;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // `useState` initializer is guaranteed to run exactly once even under
+  // React 19 StrictMode's intentional double-mount in dev.
+  const [stableRotation] = useState<number>(() => rotation ?? Math.random() * 2.3 - 1.2);
 
   const accentHex =
     accent && (accent in colors.accents ? colors.accents[accent as AccentName] : accent);
