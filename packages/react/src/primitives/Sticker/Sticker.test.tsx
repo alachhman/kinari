@@ -1,6 +1,7 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Sticker } from "./Sticker";
+import { __resetWarnedOnce } from "../../utils/warnOnceForCallSite";
 
 describe("<Sticker>", () => {
   it("renders children", () => {
@@ -52,5 +53,37 @@ describe("<Sticker>", () => {
       "--sticker-rotation",
     );
     expect(first).toBe(second);
+  });
+
+  it("accepts shadowAccent (the new prop name)", () => {
+    const { container } = render(<Sticker shadowAccent="moegi">x</Sticker>);
+    const el = container.firstChild as HTMLElement;
+    // moegi rgb is approx (125, 174, 92)
+    expect(el.style.boxShadow).toMatch(/rgba\(12[0-9],/);
+  });
+
+  it("accepts deprecated accent prop and warns once", () => {
+    __resetWarnedOnce();
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    render(<Sticker accent="moegi">x</Sticker>);
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(warn.mock.calls[0]?.[0]).toMatch(/deprecated/i);
+    warn.mockRestore();
+  });
+
+  it("prefers shadowAccent when both are passed", () => {
+    __resetWarnedOnce();
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const { container } = render(
+      <Sticker shadowAccent="moegi" accent="shikon">
+        x
+      </Sticker>,
+    );
+    const el = container.firstChild as HTMLElement;
+    // moegi rgb is approx (125, 174, 92); shikon would be (91, 61, 110)
+    expect(el.style.boxShadow).toMatch(/rgba\(12[0-9],/);
+    // No warning since shadowAccent is explicitly set
+    expect(warn).not.toHaveBeenCalled();
+    warn.mockRestore();
   });
 });

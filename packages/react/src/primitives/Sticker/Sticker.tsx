@@ -1,6 +1,7 @@
 import { type CSSProperties, type ReactNode, useState } from "react";
 import clsx from "clsx";
 import { shadowFromAccent } from "../../utils";
+import { warnOnceForCallSite } from "../../utils/warnOnceForCallSite";
 import { type AccentName, colors } from "@kinari/tokens";
 import styles from "./Sticker.module.css";
 
@@ -10,7 +11,9 @@ export interface StickerProps {
   rotation?: number;
   /** Resting (default) or floating shadow depth. */
   lift?: "resting" | "floating";
-  /** When set, generates a colored shadow via shadowFromAccent. */
+  /** Tint the drop shadow with this accent's hue. Sticker background stays white. */
+  shadowAccent?: AccentName | string;
+  /** @deprecated Use `shadowAccent` instead. Removed in v0.3. */
   accent?: AccentName | string;
   /** Die-cut (default) or polaroid variant. */
   variant?: "die-cut" | "polaroid";
@@ -27,6 +30,7 @@ export function Sticker({
   children,
   rotation,
   lift = "resting",
+  shadowAccent,
   accent,
   variant = "die-cut",
   as = "div",
@@ -40,8 +44,18 @@ export function Sticker({
   // signals "remember this once" and avoids the eslint-disable.
   const [stableRotation] = useState<number>(() => rotation ?? Math.random() * 2.3 - 1.2);
 
+  // Migration: shadowAccent is the v0.2 name. accent is deprecated.
+  if (accent && !shadowAccent) {
+    warnOnceForCallSite(
+      "Sticker prop `accent` is deprecated; rename to `shadowAccent`. Behavior is unchanged.",
+    );
+  }
+  const resolvedAccent = shadowAccent ?? accent;
   const accentHex =
-    accent && (accent in colors.accents ? colors.accents[accent as AccentName] : accent);
+    resolvedAccent &&
+    (resolvedAccent in colors.accents
+      ? colors.accents[resolvedAccent as AccentName]
+      : resolvedAccent);
 
   const style: CSSProperties = {
     "--sticker-rotation": `${stableRotation}deg`,
