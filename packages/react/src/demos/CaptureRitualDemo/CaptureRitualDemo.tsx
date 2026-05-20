@@ -1,4 +1,5 @@
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
+import { useConfirmGlow } from "../../utils/useConfirmGlow";
 import { type AccentName } from "@kinari/tokens";
 import styles from "./CaptureRitualDemo.module.css";
 
@@ -7,12 +8,17 @@ export interface CaptureRitualDemoProps {
   accent?: AccentName | string;
 }
 
-export function CaptureRitualDemo({ subject = "🍎", accent: _accent }: CaptureRitualDemoProps) {
-  const [state, setState] = useState<"idle" | "blooming" | "settled">("idle");
+export function CaptureRitualDemo({ subject = "🍎", accent }: CaptureRitualDemoProps) {
+  const [state, setState] = useState<"idle" | "settled">("idle");
+  const shutterRef = useRef<HTMLButtonElement | null>(null);
+  const { glow } = useConfirmGlow(accent ? { color: accent } : {});
 
   const fire = () => {
-    setState("blooming");
-    setTimeout(() => setState("settled"), 320);
+    if (shutterRef.current) {
+      glow(shutterRef.current.getBoundingClientRect());
+    }
+    // Subject lands after the glow peak
+    setTimeout(() => setState("settled"), 200);
   };
 
   const reset = () => setState("idle");
@@ -26,9 +32,9 @@ export function CaptureRitualDemo({ subject = "🍎", accent: _accent }: Capture
           <div data-kinari-element="bracket" className={`${styles.bracket} ${styles.bracketBL}`} />
           <div data-kinari-element="bracket" className={`${styles.bracket} ${styles.bracketBR}`} />
         </div>
-        <div className={styles.bloom} />
         <div className={styles.subject}>{subject}</div>
         <button
+          ref={shutterRef}
           data-kinari-element="shutter"
           type="button"
           className={styles.shutter}

@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import { CaptureRitualDemo } from "./CaptureRitualDemo";
 
 describe("<CaptureRitualDemo>", () => {
@@ -9,10 +9,15 @@ describe("<CaptureRitualDemo>", () => {
     expect(container.querySelectorAll('[data-kinari-element="bracket"]')).toHaveLength(4);
   });
 
-  it("on shutter tap, advances to bloom and then to settled", () => {
+  it("on shutter tap, advances to settled", () => {
+    vi.useFakeTimers();
     const { container } = render(<CaptureRitualDemo />);
     fireEvent.click(container.querySelector('[data-kinari-element="shutter"]')!);
-    expect(container.querySelector('[data-state="blooming"]')).toBeInTheDocument();
+    act(() => {
+      vi.advanceTimersByTime(250);
+    });
+    expect(container.querySelector('[data-state="settled"]')).toBeInTheDocument();
+    vi.useRealTimers();
   });
 
   it("replay resets the demo", () => {
