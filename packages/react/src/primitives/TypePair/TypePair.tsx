@@ -1,11 +1,11 @@
-import { type ElementType, type ReactNode } from "react";
+import { type ElementType, type HTMLAttributes, type ReactNode } from "react";
 import clsx from "clsx";
 import styles from "./TypePair.module.css";
 
 export type TypeRoleProps = {
   children: ReactNode;
   as?: ElementType;
-} & React.HTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLElement>;
 
 /** Visual Language §01 type role: Display — friendly serif weight 600. */
 export function Display({ children, as: As = "h2", className, ...rest }: TypeRoleProps) {
