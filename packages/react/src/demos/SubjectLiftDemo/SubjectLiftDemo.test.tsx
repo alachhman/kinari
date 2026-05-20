@@ -13,4 +13,14 @@ describe("<SubjectLiftDemo>", () => {
     fireEvent.click(screen.getByRole("button", { name: /lift subject/i }));
     expect(container.querySelector('[data-state="shimmering"]')).toBeInTheDocument();
   });
+
+  it("uses local asset URLs by default (no external http)", () => {
+    const { container } = render(<SubjectLiftDemo />);
+    const imgs = container.querySelectorAll("img");
+    expect(imgs).toHaveLength(2);
+    imgs.forEach((img) => {
+      const src = img.getAttribute("src") ?? "";
+      expect(src).not.toMatch(/^https?:\/\//);
+    });
+  });
 });

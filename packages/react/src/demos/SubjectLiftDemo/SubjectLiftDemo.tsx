@@ -1,12 +1,17 @@
 import { useState } from "react";
 import styles from "./SubjectLiftDemo.module.css";
+import cutoutUrl from "./assets/apple-cutout.png?url";
+import contextUrl from "./assets/apple-on-counter.jpg?url";
 
 export interface SubjectLiftDemoProps {
-  src: string;
-  context: string;
+  src?: string;
+  context?: string;
 }
 
-export function SubjectLiftDemo({ src, context }: SubjectLiftDemoProps) {
+export function SubjectLiftDemo({
+  src = cutoutUrl,
+  context = contextUrl,
+}: SubjectLiftDemoProps = {}) {
   const [state, setState] = useState<"idle" | "shimmering" | "lifted">("idle");
 
   const lift = () => {
