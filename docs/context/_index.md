@@ -21,6 +21,7 @@ Purpose: source material for an in-progress design philosophy/framework for the 
 | Source | Type | One-line hook |
 |---|---|---|
 | [KiteSprint — 今日Plog food/wellness diary app](KiteSprint-2055871758352441792.md) | Twitter video, 15s, silent | Chinese food-logging app that turns meals into draggable, captionable photo stickers on a Live Photo canvas |
+| [KiteSprint — onboarding flow](KiteSprint-2056743658217763246.md) | Twitter video, 16s, silent | 6-step first-run flow: AI cutout demo · Live Photo "Plog" · gender · birth year · height · weight |
 | [Om Patel — dad-built kids' language-learning app](om_patel5-2055487997567553698.md) | Twitter video, 26s, silent | Point camera at any object → app cuts it out and gives you a labeled, pronounceable sticker in your target language |
 
 ## Cross-cutting design DNA (what these two apps share)
