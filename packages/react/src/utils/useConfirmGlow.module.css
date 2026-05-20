@@ -1,0 +1,38 @@
+.glow {
+  position: fixed;
+  pointer-events: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-color, var(--kaki-iro)) 0%, transparent 70%);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  z-index: 9999;
+}
+.glow[data-state="blooming"] {
+  animation: kinari-glow-bloom 150ms var(--ease-tawami) forwards;
+}
+.glow[data-state="contracting"] {
+  animation: kinari-glow-contract 150ms var(--ease-tawami) forwards;
+}
+
+@keyframes kinari-glow-bloom {
+  to {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+@keyframes kinari-glow-contract {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow[data-state="blooming"],
+  .glow[data-state="contracting"] {
+    animation: none;
+    opacity: 0;
+  }
+}
