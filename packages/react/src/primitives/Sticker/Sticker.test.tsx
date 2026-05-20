@@ -1,6 +1,7 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Sticker } from "./Sticker";
+import { __resetWarnedOnce } from "../../utils/warnOnceForCallSite";
 
 describe("<Sticker>", () => {
   it("renders children", () => {
@@ -52,5 +53,58 @@ describe("<Sticker>", () => {
       "--sticker-rotation",
     );
     expect(first).toBe(second);
+  });
+
+  it("accepts shadowAccent (the new prop name)", () => {
+    const { container } = render(<Sticker shadowAccent="moegi">x</Sticker>);
+    const el = container.firstChild as HTMLElement;
+    // moegi rgb is approx (125, 174, 92)
+    expect(el.style.boxShadow).toMatch(/rgba\(12[0-9],/);
+  });
+
+  it("accepts deprecated accent prop and warns once", () => {
+    __resetWarnedOnce();
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    render(<Sticker accent="moegi">x</Sticker>);
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(warn.mock.calls[0]?.[0]).toMatch(/deprecated/i);
+    warn.mockRestore();
+  });
+
+  it("prefers shadowAccent when both are passed", () => {
+    __resetWarnedOnce();
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const { container } = render(
+      <Sticker shadowAccent="moegi" accent="shikon">
+        x
+      </Sticker>,
+    );
+    const el = container.firstChild as HTMLElement;
+    // moegi rgb is approx (125, 174, 92); shikon would be (91, 61, 110)
+    expect(el.style.boxShadow).toMatch(/rgba\(12[0-9],/);
+    // No warning since shadowAccent is explicitly set
+    expect(warn).not.toHaveBeenCalled();
+    warn.mockRestore();
+  });
+
+  it("polaroid variant renders a caption below the photo", () => {
+    render(
+      <Sticker variant="polaroid" caption="June · Maine coast">
+        <img src="/test.jpg" alt="" />
+      </Sticker>,
+    );
+    expect(screen.getByText("June · Maine coast")).toBeInTheDocument();
+  });
+
+  it("polaroid variant applies the requested photoAspect class", () => {
+    const { container } = render(
+      <Sticker variant="polaroid" photoAspect="4/3" caption="x">
+        <img src="/test.jpg" alt="" />
+      </Sticker>,
+    );
+    expect(container.querySelector('[data-kinari-element="photo"]')).toHaveAttribute(
+      "data-aspect",
+      "4/3",
+    );
   });
 });

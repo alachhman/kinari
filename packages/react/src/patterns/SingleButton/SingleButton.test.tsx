@@ -46,4 +46,9 @@ describe("<SingleButton>", () => {
     const btn = container.querySelector('[data-kinari-component="single-button"]') as HTMLElement;
     expect(btn.style.getPropertyValue("--single-button-size")).toBe("56px");
   });
+
+  it("derives aria-label from title when no explicit label given", () => {
+    render(<SingleButton shape={<span>S</span>} onTap={() => {}} title="Capture" />);
+    expect(screen.getByLabelText("Capture")).toBeInTheDocument();
+  });
 });

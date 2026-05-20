@@ -63,35 +63,8 @@
   transition: opacity 200ms var(--ease-tawami);
 }
 
-.bloom {
-  position: absolute;
-  inset: 30%;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--kaki-iro) 0%, transparent 70%);
-  opacity: 0;
-  transform: scale(0.6);
-  pointer-events: none;
-}
-
-[data-state="blooming"] .bloom {
-  animation: bloom 300ms var(--ease-tawami) forwards;
-}
 [data-state="settled"] .subject {
   opacity: 1;
-}
-@keyframes bloom {
-  0% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
 }
 
 .shutter {

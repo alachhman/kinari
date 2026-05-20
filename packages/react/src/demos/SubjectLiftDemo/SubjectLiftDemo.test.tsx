@@ -13,4 +13,23 @@ describe("<SubjectLiftDemo>", () => {
     fireEvent.click(screen.getByRole("button", { name: /lift subject/i }));
     expect(container.querySelector('[data-state="shimmering"]')).toBeInTheDocument();
   });
+
+  it("uses local asset URLs by default (no external http)", () => {
+    const { container } = render(<SubjectLiftDemo />);
+    const imgs = container.querySelectorAll("img");
+    expect(imgs).toHaveLength(2);
+
+    const sources = Array.from(imgs).map((img) => img.getAttribute("src") ?? "");
+    sources.forEach((src) => {
+      expect(src).not.toMatch(/^https?:\/\//);
+      // Positive check: src must be non-empty and point at the local apple assets
+      expect(src.length).toBeGreaterThan(0);
+      expect(src).toMatch(/apple-(cutout|on-counter)/);
+    });
+  });
+
+  it("renders a polite live region for lift announcements", () => {
+    const { container } = render(<SubjectLiftDemo />);
+    expect(container.querySelector('[aria-live="polite"]')).toBeInTheDocument();
+  });
 });

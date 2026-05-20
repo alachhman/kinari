@@ -41,32 +41,6 @@
   opacity: 0.4;
 }
 
-.shimmer {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent 0 6px,
-    color-mix(in srgb, var(--kaki-iro) 30%, transparent) 6px 8px
-  );
-}
-[data-state="shimmering"] .shimmer {
-  animation: shimmer 700ms var(--ease-tawami) forwards;
-}
-@keyframes shimmer {
-  0% {
-    opacity: 0;
-  }
-  30% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 .cta {
   font-family: -apple-system, system-ui, sans-serif;
   font-weight: 700;
@@ -78,11 +52,4 @@
   padding: 8px 18px;
   cursor: pointer;
   align-self: center;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-state="shimmering"] .shimmer {
-    animation: none;
-    opacity: 0;
-  }
 }

@@ -1,12 +1,18 @@
 import { useState } from "react";
+import { ShimmerDust } from "../../primitives/ShimmerDust";
+import cutoutUrl from "./assets/apple-cutout.png?url";
+import contextUrl from "./assets/apple-on-counter.jpg?url";
 import styles from "./SubjectLiftDemo.module.css";
 
 export interface SubjectLiftDemoProps {
-  src: string;
-  context: string;
+  src?: string;
+  context?: string;
 }
 
-export function SubjectLiftDemo({ src, context }: SubjectLiftDemoProps) {
+export function SubjectLiftDemo({
+  src = cutoutUrl,
+  context = contextUrl,
+}: SubjectLiftDemoProps = {}) {
   const [state, setState] = useState<"idle" | "shimmering" | "lifted">("idle");
 
   const lift = () => {
@@ -17,9 +23,13 @@ export function SubjectLiftDemo({ src, context }: SubjectLiftDemoProps) {
   return (
     <div className={styles.demo}>
       <div className={styles.stage} data-state={state}>
-        <img src={context} alt="" className={styles.context} aria-hidden="true" />
-        <img src={src} alt="" className={styles.subject} aria-hidden="true" />
-        <div className={styles.shimmer} aria-hidden="true" />
+        <ShimmerDust active={state === "shimmering"}>
+          <img src={context} alt="" className={styles.context} aria-hidden="true" />
+          <img src={src} alt="" className={styles.subject} aria-hidden="true" />
+        </ShimmerDust>
+        <div aria-live="polite" style={{ position: "absolute", left: "-9999px" }}>
+          {state === "lifted" ? "Subject lifted" : ""}
+        </div>
       </div>
       <button type="button" className={styles.cta} onClick={lift} aria-label="Lift subject">
         Lift subject ↑

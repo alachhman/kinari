@@ -24,4 +24,10 @@ describe("<Horizon>", () => {
     rerender(<Horizon spacing="loose" />);
     expect((container.firstChild as HTMLElement).className).toContain("loose");
   });
+
+  it("marks gradient lines as decorative", () => {
+    const { container } = render(<Horizon />);
+    const hidden = container.querySelectorAll('[aria-hidden="true"]');
+    expect(hidden.length).toBeGreaterThanOrEqual(2);
+  });
 });

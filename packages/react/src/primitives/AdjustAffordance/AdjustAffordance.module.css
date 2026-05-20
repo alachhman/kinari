@@ -1,0 +1,49 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--shiro);
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  color: var(--sumi);
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: var(--shadow-umber-resting);
+  transition:
+    transform var(--duration-cross-fade) var(--ease-tawami),
+    box-shadow var(--duration-cross-fade) var(--ease-tawami);
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-umber-floating);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--shikon);
+  outline-offset: 3px;
+}
+
+.pill[data-size="small"] {
+  padding: 6px 12px;
+  font-size: 11px;
+}
+
+.glyph {
+  color: var(--kaki-iro);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.pill[data-size="small"] .glyph {
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill {
+    transition: none;
+  }
+}
