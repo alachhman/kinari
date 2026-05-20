@@ -86,4 +86,25 @@ describe("<Sticker>", () => {
     expect(warn).not.toHaveBeenCalled();
     warn.mockRestore();
   });
+
+  it("polaroid variant renders a caption below the photo", () => {
+    render(
+      <Sticker variant="polaroid" caption="June · Maine coast">
+        <img src="/test.jpg" alt="" />
+      </Sticker>,
+    );
+    expect(screen.getByText("June · Maine coast")).toBeInTheDocument();
+  });
+
+  it("polaroid variant applies the requested photoAspect class", () => {
+    const { container } = render(
+      <Sticker variant="polaroid" photoAspect="4/3" caption="x">
+        <img src="/test.jpg" alt="" />
+      </Sticker>,
+    );
+    expect(container.querySelector('[data-kinari-element="photo"]')).toHaveAttribute(
+      "data-aspect",
+      "4/3",
+    );
+  });
 });

@@ -17,6 +17,10 @@ export interface StickerProps {
   accent?: AccentName | string;
   /** Die-cut (default) or polaroid variant. */
   variant?: "die-cut" | "polaroid";
+  /** Polaroid-only. Caption rendered below the photo. */
+  caption?: ReactNode;
+  /** Polaroid-only. Aspect ratio of the photo area. Default: "square". */
+  photoAspect?: "square" | "4/3" | "3/4" | "16/9";
   /** Element role — defaults to div. */
   as?: "div" | "a" | "button";
   href?: string;
@@ -33,6 +37,8 @@ export function Sticker({
   shadowAccent,
   accent,
   variant = "die-cut",
+  caption,
+  photoAspect = "square",
   as = "div",
   href,
   onClick,
@@ -71,23 +77,35 @@ export function Sticker({
 
   const dataAttrs = { "data-kinari-component": "sticker" };
 
+  const content =
+    variant === "polaroid" ? (
+      <>
+        <div className={styles.photo} data-kinari-element="photo" data-aspect={photoAspect}>
+          {children}
+        </div>
+        {caption && <div className={styles.caption}>{caption}</div>}
+      </>
+    ) : (
+      children
+    );
+
   if (as === "a") {
     return (
       <a {...dataAttrs} className={classNames} style={style} href={href}>
-        {children}
+        {content}
       </a>
     );
   }
   if (as === "button") {
     return (
       <button {...dataAttrs} type="button" className={classNames} style={style} onClick={onClick}>
-        {children}
+        {content}
       </button>
     );
   }
   return (
     <div {...dataAttrs} className={classNames} style={style}>
-      {children}
+      {content}
     </div>
   );
 }
