@@ -22,4 +22,14 @@ describe("type-role components", () => {
     render(<Display as="h1">h1 title</Display>);
     expect(screen.getByText("h1 title").tagName).toBe("H1");
   });
+
+  it("Display spreads inline style to the rendered element", () => {
+    render(<Display style={{ color: "rgb(255, 0, 0)" }}>x</Display>);
+    expect(screen.getByText("x")).toHaveStyle({ color: "rgb(255, 0, 0)" });
+  });
+
+  it("Label spreads arbitrary data-* attributes", () => {
+    render(<Label data-testid="lbl">Label</Label>);
+    expect(screen.getByTestId("lbl")).toBeInTheDocument();
+  });
 });
