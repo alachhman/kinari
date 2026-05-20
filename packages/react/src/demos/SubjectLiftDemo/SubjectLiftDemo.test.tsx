@@ -18,9 +18,13 @@ describe("<SubjectLiftDemo>", () => {
     const { container } = render(<SubjectLiftDemo />);
     const imgs = container.querySelectorAll("img");
     expect(imgs).toHaveLength(2);
-    imgs.forEach((img) => {
-      const src = img.getAttribute("src") ?? "";
+
+    const sources = Array.from(imgs).map((img) => img.getAttribute("src") ?? "");
+    sources.forEach((src) => {
       expect(src).not.toMatch(/^https?:\/\//);
+      // Positive check: src must be non-empty and point at the local apple assets
+      expect(src.length).toBeGreaterThan(0);
+      expect(src).toMatch(/apple-(cutout|on-counter)/);
     });
   });
 });
